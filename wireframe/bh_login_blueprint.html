@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>B&W BLUEPRINT: SECURE_AUTH_GATEWAY</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { 
+            background: white; 
+            color: black; 
+            font-family: 'Courier New', Courier, monospace; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            min-height: 100vh;
+            background-image: radial-gradient(#eee 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        .annotate { font-size: 9px; border: 1px solid black; padding: 2px 4px; position: absolute; background: white; z-index: 10; text-transform: uppercase; font-weight: bold; }
+        
+        .login-container { width: 400px; position: relative; }
+        .block { border: 2px solid black; padding: 30px; background: white; box-shadow: 10px 10px 0px black; }
+        .block-dashed { border: 1px dashed black; padding: 15px; margin-top: 20px; }
+
+        .logo-placeholder { border: 1px double black; height: 60px; display: flex; align-items: center; justify-content: center; margin-bottom: 30px; font-weight: bold; }
+        
+        .field-group { margin-bottom: 20px; position: relative; }
+        .field-label { font-size: 10px; font-weight: bold; margin-bottom: 5px; display: block; }
+        .input-wire { border: 1px solid black; width: 100%; height: 40px; padding: 10px; font-family: inherit; }
+        
+        .role-selector { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 5px; margin-bottom: 20px; }
+        .role-node { border: 1px solid black; font-size: 8px; padding: 5px; text-align: center; cursor: pointer; }
+        .role-node.selected { background: black; color: white; }
+
+        .btn-auth { border: 2px solid black; width: 100%; padding: 15px; font-weight: bold; cursor: pointer; text-align: center; margin-top: 10px; }
+        .btn-auth:hover { background: #f0f0f0; }
+
+        .security-footer { font-size: 8px; margin-top: 20px; text-align: center; line-height: 1.5; }
+        .system-marker { position: fixed; top: 20px; right: 20px; border: 1px solid black; padding: 5px; font-size: 9px; }
+    </style>
+</head>
+<body>
+
+    <div class="system-marker">
+        NODE: HILI_OFFICE_V1<br>
+        IP_RESTRICTED: YES
+    </div>
+
+    <div class="login-container">
+        <div class="annotate" style="top: -15px; left: 20px;">GATEWAY: AUTH_01</div>
+        
+        <div class="block">
+            <div class="logo-placeholder">
+                [BH_LOGO_V1]<br>
+                BANGLA_HOPE_SYSTEM
+            </div>
+
+            <div class="field-group">
+                <label class="field-label">USER_IDENTIFIER (UID/EMAIL)</label>
+                <input type="text" class="input-wire" placeholder="admin_hili_01">
+            </div>
+
+            <div class="field-group">
+                <label class="field-label">SECURE_PASSPHRASE</label>
+                <input type="password" class="input-wire" value="********">
+                <div class="annotate" style="bottom: -8px; right: 0; border: none; font-size: 7px;">[MASKED_INPUT]</div>
+            </div>
+
+            <div class="block-dashed" style="padding: 10px; margin-bottom: 20px;">
+                <div class="annotate" style="top: -10px; left: 10px;">MFA_VERIFICATION</div>
+                <div style="font-size: 9px; margin-bottom: 5px;">INPUT_NODE_TOKEN:</div>
+                <input type="text" class="input-wire" style="height: 30px;" placeholder="000-000">
+            </div>
+
+            <div class="btn-auth">INITIATE_SESSION_ENTRY</div>
+
+            <div class="security-footer">
+                AUTHORIZED ACCESS ONLY. ALL SESSIONS ARE LOGGED.<br>
+                REF: PROPOSAL_SEC_04 // USER_ROLE_ENFORCEMENT
+            </div>
+        </div>
+
+        <div style="margin-top: 20px; font-size: 9px; text-align: center;">
+            <span style="text-decoration: underline; cursor: pointer;">FORGOT_PASSPHRASE?</span> | 
+            <span style="text-decoration: underline; cursor: pointer;">CONTACT_IT_SUPPORT</span>
+        </div>
+    </div>
+
+</body>
+</html>
