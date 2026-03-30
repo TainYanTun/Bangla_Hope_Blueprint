@@ -13,13 +13,14 @@
             min-height: 100vh;
         }
 
-        .sidebar { width: 252px; border-right: 2px solid black; padding: 10px; }
+        .annotate { font-size: 9px; border: 1px solid black; padding: 2px 4px; display: inline-block; text-transform: uppercase; font-weight: bold; margin-bottom: 5px; }
+        .sidebar { width: 252px; border-right: 2px solid black; display: flex; flex-direction: column; position: relative; }
         .main { flex: 1; display: flex; flex-direction: column; }
         .topbar { height: 64px; border-bottom: 2px solid black; padding: 0 20px; display: flex; align-items: center; }
         .content { padding: 40px; max-width: 900px; }
 
-        .annotate { font-size: 9px; border: 1px solid black; padding: 2px 4px; display: inline-block; text-transform: uppercase; font-weight: bold; margin-bottom: 5px; }
         .block { border: 1px solid black; position: relative; padding: 20px; margin-bottom: 20px; }
+        .block-dashed { border: 1px dashed black; position: relative; padding: 15px; }
         
         /* Form Components */
         .field-wire { border: 1px solid black; height: 35px; margin-top: 5px; margin-bottom: 15px; position: relative; }
@@ -30,15 +31,45 @@
         .btn-filled { background: black; color: white; }
 
         h3 { font-size: 14px; margin-bottom: 10px; text-decoration: underline; }
+
+        .nav-item { border-bottom: 1px dashed #ccc; padding: 10px 5px; font-size: 11px; display: flex; justify-content: space-between; }
+        .active-node { background: black; color: white; font-weight: bold; }
     </style>
 </head>
 <body>
 
     <aside class="sidebar">
-        <div style="border: 1px solid black; height: 80px; margin-bottom: 20px; text-align: center;"><br>[BH_LOGO]</div>
-        <div style="font-size: 11px; line-height: 2;">
-            > DASHBOARD<br>
-            > ALL_STUDENTS
+        <div class="block" style="height: 80px; margin: 10px; border-style: double; text-align: center;">
+            <br>[BH_LOGO]<br>BANGLA_HOPE
+        </div>
+        
+        <div class="block-dashed" style="margin: 10px;">
+            <div class="annotate" style="top: -10px; left: 10px; position: absolute; background: white;">NAV_GRP: OVERVIEW</div>
+            <div class="nav-item">> DASHBOARD</div>
+            <div class="nav-item">> ALL_STUDENTS [821]</div>
+        </div>
+
+        <div class="block-dashed" style="margin: 10px;">
+            <div class="annotate" style="top: -10px; left: 10px; position: absolute; background: white;">NAV_GRP: PROGRAMS</div>
+            <div class="nav-item">> LRC_HOME [124]</div>
+            <div class="nav-item">> BOARDING [147]</div>
+            <div class="nav-item">> VILLAGE [550]</div>
+            <div class="nav-item">> LOAN_PROG</div>
+            <div class="nav-item">> STAFF_CHILDREN</div>
+        </div>
+
+        <div class="block-dashed" style="margin: 10px;">
+            <div class="annotate" style="top: -10px; left: 10px; position: absolute; background: white;">NAV_GRP: MANAGEMENT</div>
+            <div class="nav-item">> SPONSORS</div>
+            <div class="nav-item">> SUBSIDIES_FINANCE</div>
+            <div class="nav-item">> REPORTS_APR</div>
+            <div class="nav-item">> THANK_YOU_LETTERS</div>
+            <div class="nav-item">> DROP_ARCHIVE</div>
+        </div>
+
+        <div class="block" style="margin-top: auto; height: 60px; margin: 10px;">
+            USER: MAIN_ADMIN<br>
+            <span style="font-size: 9px;">UID: #9928_HILI</span>
         </div>
     </aside>
 

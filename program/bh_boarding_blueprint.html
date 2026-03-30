@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>B&W BLUEPRINT: BOARDING_SCHOOLS</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { background: white; color: black; font-family: 'Courier New', Courier, monospace; display: flex; min-height: 100vh; }
+        .annotate { font-size: 9px; border: 1px solid black; padding: 2px 4px; position: absolute; background: white; z-index: 10; text-transform: uppercase; font-weight: bold; }
+        .sidebar { width: 252px; border-right: 2px solid black; display: flex; flex-direction: column; position: relative; }
+        .main { flex: 1; display: flex; flex-direction: column; }
+        .topbar { height: 64px; border-bottom: 2px solid black; padding: 0 20px; display: flex; align-items: center; }
+        .content { padding: 30px; display: flex; flex-direction: column; gap: 20px; }
+        .block { border: 1px solid black; position: relative; padding: 15px; }
+        .block-dashed { border: 1px dashed black; position: relative; padding: 15px; }
+        .nav-item { border-bottom: 1px dashed #ccc; padding: 10px 5px; font-size: 11px; display: flex; justify-content: space-between; }
+        .active-node { background: black; color: white; font-weight: bold; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { border: 1px solid black; padding: 8px; font-size: 10px; text-align: left; }
+        th { background: #f0f0f0; }
+        .btn-node { border: 1px solid black; padding: 5px 15px; font-size: 10px; font-weight: bold; cursor: pointer; text-decoration: none; color: black; }
+        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
+    </style>
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="block" style="height: 80px; margin: 10px; border-style: double; text-align: center;"><br>[BH_LOGO]<br>BANGLA_HOPE</div>
+        <div class="block-dashed" style="margin: 10px;">
+            <div class="annotate" style="top: -10px; left: 10px;">NAV_GRP: OVERVIEW</div>
+            <div class="nav-item">> DASHBOARD</div>
+            <div class="nav-item">> ALL_STUDENTS [821]</div>
+        </div>
+        <div class="block-dashed" style="margin: 10px;">
+            <div class="annotate" style="top: -10px; left: 10px;">NAV_GRP: PROGRAMS</div>
+            <div class="nav-item">> LRC_HOME [124]</div>
+            <div class="nav-item active-node">> BOARDING [147]</div>
+            <div class="nav-item">> VILLAGE [550]</div>
+            <div class="nav-item">> LOAN_PROG</div>
+            <div class="nav-item">> STAFF_CHILDREN</div>
+        </div>
+        <div class="block-dashed" style="margin: 10px;">
+            <div class="annotate" style="top: -10px; left: 10px;">NAV_GRP: MANAGEMENT</div>
+            <div class="nav-item">> SPONSORS [312]</div>
+            <div class="nav-item">> SUBSIDIES_FINANCE</div>
+            <div class="nav-item">> REPORTS_APR</div>
+            <div class="nav-item">> THANK_YOU_LETTERS</div>
+            <div class="nav-item">> DROP_ARCHIVE</div>
+        </div>
+        <div class="block" style="margin-top: auto; height: 60px; margin: 10px;">USER: MAIN_ADMIN<br><span style="font-size: 9px;">UID: #9928_HILI</span></div>
+    </aside>
+
+    <main class="main">
+        <header class="topbar">
+            <div style="font-size: 11px;">SCHEMA: PROGRAM // BOARDING_SCHOOLS // LIST_VIEW</div>
+            <div style="margin-left: auto; display: flex; gap: 10px;">
+                <div class="btn-node">[+] ADD_BOARDING_STUDENT</div>
+            </div>
+        </header>
+        <div class="content">
+            <div style="border-left: 5px solid black; padding-left: 15px; margin-bottom: 10px;">
+                <h2 style="font-size: 20px;">BOARDING_SCHOOLS_MANAGEMENT</h2>
+                <div style="font-size: 10px;">POPULATION: MIXED_ORPHAN_REGULAR // COUNT: 147</div>
+            </div>
+
+            <div class="grid-3">
+                <div class="block">
+                    <div class="annotate" style="top: -10px; left: 10px;">METRIC: SUBSIDY</div>
+                    <div style="font-size: 14px; font-weight: bold;">৳2,40,000 / mo</div>
+                    <div style="font-size: 8px;">TOTAL_FINANCIAL_AMOUNT</div>
+                </div>
+                <div class="block">
+                    <div class="annotate" style="top: -10px; left: 10px;">METRIC: POCKET_MONEY</div>
+                    <div style="font-size: 14px; font-weight: bold;">৳18,500 / mo</div>
+                    <div style="font-size: 8px;">MONTHLY_DISBURSEMENT</div>
+                </div>
+                <div class="block">
+                    <div class="annotate" style="top: -10px; left: 10px;">METRIC: APR_LOGS</div>
+                    <div style="font-size: 14px; font-weight: bold;">88%</div>
+                    <div style="font-size: 8px;">ANNUAL_REPORT_PROGRESS</div>
+                </div>
+            </div>
+
+            <div class="block">
+                <div class="annotate" style="top: -10px; left: 10px;">LIST_OF_SCHOOLS</div>
+                <table>
+                    <thead>
+                        <tr><th>SCHOOL_ID</th><th>SCHOOL_NAME_LOCATION</th><th>STUDENTS</th><th>SUBSIDY_STATUS</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>#BS-01</td><td>HILI_BOARDING_SCHOOL</td><td>65</td><td>[OK]</td></tr>
+                        <tr><td>#BS-02</td><td>DHAKA_GIRLS_COLLEGE</td><td>22</td><td>[OK]</td></tr>
+                        <tr><td>#BS-03</td><td>RAJSHAHI_ACADEMY</td><td>30</td><td>[PENDING_DATA]</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="block-dashed">
+                <div class="annotate" style="top: -10px; left: 10px;">BULK_OPERATIONS</div>
+                <div style="display: flex; gap: 10px;">
+                    <div class="btn-node">GENERATE_MONTHLY_SUBSIDY_LIST</div>
+                    <div class="btn-node">GENERATE_YEARLY_POCKET_MONEY</div>
+                    <div class="btn-node">DOWNLOAD_SUMMARY_REPORT</div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

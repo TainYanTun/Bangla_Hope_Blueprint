@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>B&W BLUEPRINT: VILLAGE_DAY_SCHOOLS</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { background: white; color: black; font-family: 'Courier New', Courier, monospace; display: flex; min-height: 100vh; }
+        .annotate { font-size: 9px; border: 1px solid black; padding: 2px 4px; position: absolute; background: white; z-index: 10; text-transform: uppercase; font-weight: bold; }
+        .sidebar { width: 252px; border-right: 2px solid black; display: flex; flex-direction: column; position: relative; }
+        .main { flex: 1; display: flex; flex-direction: column; }
+        .topbar { height: 64px; border-bottom: 2px solid black; padding: 0 20px; display: flex; align-items: center; }
+        .content { padding: 30px; display: flex; flex-direction: column; gap: 20px; }
+        .block { border: 1px solid black; position: relative; padding: 15px; }
+        .block-dashed { border: 1px dashed black; position: relative; padding: 15px; }
+        .nav-item { border-bottom: 1px dashed #ccc; padding: 10px 5px; font-size: 11px; display: flex; justify-content: space-between; }
+        .active-node { background: black; color: white; font-weight: bold; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { border: 1px solid black; padding: 8px; font-size: 10px; text-align: left; }
+        th { background: #f0f0f0; }
+        .btn-node { border: 1px solid black; padding: 5px 15px; font-size: 10px; font-weight: bold; cursor: pointer; text-decoration: none; color: black; }
+    </style>
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="block" style="height: 80px; margin: 10px; border-style: double; text-align: center;"><br>[BH_LOGO]<br>BANGLA_HOPE</div>
+        <div class="block-dashed" style="margin: 10px;">
+            <div class="annotate" style="top: -10px; left: 10px;">NAV_GRP: OVERVIEW</div>
+            <div class="nav-item">> DASHBOARD</div>
+            <div class="nav-item">> ALL_STUDENTS [821]</div>
+        </div>
+        <div class="block-dashed" style="margin: 10px;">
+            <div class="annotate" style="top: -10px; left: 10px;">NAV_GRP: PROGRAMS</div>
+            <div class="nav-item">> LRC_HOME [124]</div>
+            <div class="nav-item">> BOARDING [147]</div>
+            <div class="nav-item active-node">> VILLAGE [550]</div>
+            <div class="nav-item">> LOAN_PROG</div>
+            <div class="nav-item">> STAFF_CHILDREN</div>
+        </div>
+        <div class="block-dashed" style="margin: 10px;">
+            <div class="annotate" style="top: -10px; left: 10px;">NAV_GRP: MANAGEMENT</div>
+            <div class="nav-item">> SPONSORS [312]</div>
+            <div class="nav-item">> SUBSIDIES_FINANCE</div>
+            <div class="nav-item">> REPORTS_APR</div>
+            <div class="nav-item">> THANK_YOU_LETTERS</div>
+            <div class="nav-item">> DROP_ARCHIVE</div>
+        </div>
+        <div class="block" style="margin-top: auto; height: 60px; margin: 10px;">USER: SCHOOL_SUPERVISOR<br><span style="font-size: 9px;">UID: #SUP_VLG_01</span></div>
+    </aside>
+
+    <main class="main">
+        <header class="topbar">
+            <div style="font-size: 11px;">SCHEMA: PROGRAM // VILLAGE_SCHOOLS // DIRECTORY</div>
+            <div style="margin-left: auto;">
+                <div class="btn-node">[+] ADMIT_VILLAGE_STUDENT</div>
+            </div>
+        </header>
+        <div class="content">
+            <div style="border-left: 5px solid black; padding-left: 15px; margin-bottom: 10px;">
+                <h2 style="font-size: 20px;">VILLAGE_DAY_SCHOOLS_NETWORK</h2>
+                <div style="font-size: 10px;">SCOPE: 11_SCHOOLS // TOTAL_STUDENTS: ~550</div>
+            </div>
+
+            <div class="block">
+                <div class="annotate" style="top: -10px; left: 10px;">SCHOOL_LIST_MASTER</div>
+                <table>
+                    <thead>
+                        <tr><th>SCHOOL_UID</th><th>LOCATION</th><th>SUPERVISOR</th><th>TEACHERS</th><th>STUDENTS</th><th>OPERATIONS</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>#VS-01</td><td>BONPARA</td><td>A. HOSSAIN</td><td>4</td><td>52</td><td>[VIEW_ROSTER]</td></tr>
+                        <tr><td>#VS-02</td><td>PABNA</td><td>M. RAHMAN</td><td>3</td><td>48</td><td>[VIEW_ROSTER]</td></tr>
+                        <tr><td>#VS-03</td><td>HILI_VILLAGE</td><td>S. ISLAM</td><td>6</td><td>85</td><td>[VIEW_ROSTER]</td></tr>
+                        <tr><td>#VS-04</td><td>BOGRA_WEST</td><td>J. AKTER</td><td>4</td><td>42</td><td>[VIEW_ROSTER]</td></tr>
+                        <tr><td>#VS-05</td><td>RANGPUR</td><td>K. AHMED</td><td>5</td><td>61</td><td>[VIEW_ROSTER]</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1.5fr 1fr; gap: 20px;">
+                <div class="block">
+                    <div class="annotate" style="top: -10px; left: 10px;">SUPERVISOR_QUICK_ACTIONS</div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                        <div class="btn-node" style="height: 60px; display: flex; align-items: center; justify-content: center; text-align: center;">UPLOAD_STUDENT_PICTURES<br>(BULK)</div>
+                        <div class="btn-node" style="height: 60px; display: flex; align-items: center; justify-content: center; text-align: center;">CONTACT_DIRECTORY<br>(TEACHERS)</div>
+                        <div class="btn-node" style="height: 60px; display: flex; align-items: center; justify-content: center; text-align: center;">PRINT_ADMISSION_FORMS</div>
+                        <div class="btn-node" style="height: 60px; display: flex; align-items: center; justify-content: center; text-align: center;">SCHOOL_SUPPLY_LOG</div>
+                    </div>
+                </div>
+                <div class="block-dashed">
+                    <div class="annotate" style="top: -10px; left: 10px;">PROGRAM_ALERTS</div>
+                    <div style="font-size: 10px; line-height: 1.8;">
+                        > 5 APR REPORTS PENDING (BONPARA)<br>
+                        > 12 STUDENT PICTURES EXPIRED (PABNA)<br>
+                        > NEW ADMISSION REQUESTS: 3
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

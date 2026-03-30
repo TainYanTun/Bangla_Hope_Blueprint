@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>B&W BLUEPRINT: SPONSOR_DETAILS</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background: white;
+            color: black;
+            font-family: 'Courier New', Courier, monospace;
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .annotate { font-size: 9px; border: 1px solid black; padding: 2px 4px; position: absolute; background: white; z-index: 10; text-transform: uppercase; font-weight: bold; }
+        .sidebar { width: 252px; border-right: 2px solid black; display: flex; flex-direction: column; position: relative; }
+        .main { flex: 1; display: flex; flex-direction: column; }
+        .topbar { height: 64px; border-bottom: 2px solid black; padding: 0 20px; display: flex; align-items: center; }
+        .content { padding: 30px; display: flex; flex-direction: column; gap: 20px; }
+
+        .block { border: 1px solid black; position: relative; padding: 15px; }
+        .block-dashed { border: 1px dashed black; position: relative; padding: 15px; }
+        
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        
+        table { width: 100%; border-collapse: collapse; }
+        th, td { border: 1px solid black; padding: 10px; font-size: 11px; text-align: left; }
+        th { background: #f0f0f0; }
+
+        .btn-node { border: 1px solid black; padding: 5px 15px; font-size: 10px; font-weight: bold; cursor: pointer; text-decoration: none; color: black; }
+        .nav-item { border-bottom: 1px dashed #ccc; padding: 10px 5px; font-size: 11px; display: flex; justify-content: space-between; }
+        .active-node { background: black; color: white; font-weight: bold; }
+        
+        .field-label { font-size: 10px; font-weight: bold; text-decoration: underline; margin-bottom: 5px; }
+        .field-value { font-size: 12px; margin-bottom: 15px; }
+    </style>
+</head>
+<body>
+
+    <aside class="sidebar">
+        <div class="block" style="height: 80px; margin: 10px; border-style: double; text-align: center;">
+            <br>[BH_LOGO]<br>BANGLA_HOPE
+        </div>
+        
+        <div class="block-dashed" style="margin: 10px;">
+            <div class="annotate" style="top: -10px; left: 10px;">NAV_GRP: OVERVIEW</div>
+            <div class="nav-item">> DASHBOARD</div>
+            <div class="nav-item">> ALL_STUDENTS [821]</div>
+        </div>
+
+        <div class="block-dashed" style="margin: 10px;">
+            <div class="annotate" style="top: -10px; left: 10px;">NAV_GRP: PROGRAMS</div>
+            <div class="nav-item">> LRC_HOME [124]</div>
+            <div class="nav-item">> BOARDING [147]</div>
+            <div class="nav-item">> VILLAGE [550]</div>
+            <div class="nav-item">> LOAN_PROG</div>
+            <div class="nav-item">> STAFF_CHILDREN</div>
+        </div>
+
+        <div class="block-dashed" style="margin: 10px;">
+            <div class="annotate" style="top: -10px; left: 10px;">NAV_GRP: MANAGEMENT</div>
+            <div class="nav-item active-node">> SPONSORS [312]</div>
+            <div class="nav-item">> SUBSIDIES_FINANCE</div>
+            <div class="nav-item">> REPORTS_APR</div>
+            <div class="nav-item">> THANK_YOU_LETTERS</div>
+            <div class="nav-item">> DROP_ARCHIVE</div>
+        </div>
+
+        <div class="block" style="margin-top: auto; height: 60px; margin: 10px;">
+            USER: MAIN_ADMIN<br>
+            <span style="font-size: 9px;">UID: #9928_HILI</span>
+        </div>
+    </aside>
+
+    <main class="main">
+        <header class="topbar">
+            <div style="font-size: 11px;">SCHEMA: MANAGEMENT // SPONSOR_PROFILE // #SP-001</div>
+            <div style="margin-left: auto;">
+                <a href="bh_sponsors_blueprint.html" class="btn-node"> [BACK_TO_LIST] </a>
+            </div>
+        </header>
+
+        <div class="content">
+            <div style="border-left: 5px solid black; padding-left: 15px; margin-bottom: 20px;">
+                <h2 style="font-size: 22px;">SPONSOR: JAMES O'NEILL</h2>
+                <div style="font-size: 10px;">ID: #SP-001 // STATUS: ACTIVE_PRIMARY</div>
+            </div>
+
+            <div class="grid-2">
+                <!-- CONTACT INFO -->
+                <div class="block">
+                    <div class="annotate" style="top: -10px; left: 10px;">CONTACT_IDENTITY</div>
+                    <div class="field-label">EMAIL_ADDRESS</div>
+                    <div class="field-value">james.oneill@example.com</div>
+                    
+                    <div class="field-label">PHONE_NUMBER</div>
+                    <div class="field-value">+1 (555) 012-3456</div>
+                    
+                    <div class="field-label">PHYSICAL_ADDRESS</div>
+                    <div class="field-value">123 Hope Lane, San Francisco, CA 94103, USA</div>
+                </div>
+
+                <!-- PREFERENCES / NOTES -->
+                <div class="block">
+                    <div class="annotate" style="top: -10px; left: 10px;">PREF_COMMUNICATION</div>
+                    <div class="field-label">PREFERRED_METHOD</div>
+                    <div class="field-value">EMAIL / POSTAL_MAIL</div>
+                    
+                    <div class="field-label">INTERNAL_NOTES</div>
+                    <div class="field-value" style="font-size: 10px;">Sponsor since 2018. Prefers annual summary reports over monthly updates. Very active in higher study loan program.</div>
+                </div>
+            </div>
+
+            <!-- SPONSORED STUDENTS -->
+            <div class="block">
+                <div class="annotate" style="top: -10px; left: 10px;">RELATIONSHIPS: SPONSORED_STUDENTS</div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>STUDENT_UID</th>
+                            <th>NAME_STRING</th>
+                            <th>PROGRAM_CAT</th>
+                            <th>SPONSOR_TYPE</th>
+                            <th>START_DATE</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>#LRC-0124</td>
+                            <td>RINA BEGUM</td>
+                            <td>LRC_RESIDENTIAL</td>
+                            <td>PRIMARY</td>
+                            <td>2024-01-15</td>
+                        </tr>
+                        <tr>
+                            <td>#LON-0021</td>
+                            <td>A. RAHMAN</td>
+                            <td>HIGHER_STUDY_LOAN</td>
+                            <td>CO-SPONSOR</td>
+                            <td>2022-09-01</td>
+                        </tr>
+                        <tr>
+                            <td>#VLG-0512</td>
+                            <td>S. HOSSAIN</td>
+                            <td>VILLAGE_SCHOOL</td>
+                            <td>PRIMARY</td>
+                            <td>2023-03-20</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- FINANCIAL SUMMARY -->
+            <div class="block-dashed">
+                <div class="annotate" style="top: -10px; left: 10px;">FINANCIAL_CONTRIBUTION_SUMMARY</div>
+                <div style="display: flex; justify-content: space-between;">
+                    <div>
+                        <div class="field-label">MONTHLY_TOTAL</div>
+                        <div style="font-size: 18px; font-weight: bold;">৳10,500</div>
+                    </div>
+                    <div style="text-align: right;">
+                        <div class="field-label">LAST_PAYMENT_REC</div>
+                        <div class="field-value">2024-03-01 // ৳10,500</div>
+                        <div class="btn-node">GENERATE_FINANCIAL_STMT</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

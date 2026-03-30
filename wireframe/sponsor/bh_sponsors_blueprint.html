@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>B&W BLUEPRINT: SPONSOR_DIRECTORY</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background: white;
+            color: black;
+            font-family: 'Courier New', Courier, monospace;
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .annotate { font-size: 9px; border: 1px solid black; padding: 2px 4px; position: absolute; background: white; z-index: 10; text-transform: uppercase; font-weight: bold; }
+        .sidebar { width: 252px; border-right: 2px solid black; display: flex; flex-direction: column; position: relative; }
+        .main { flex: 1; display: flex; flex-direction: column; }
+        .topbar { height: 64px; border-bottom: 2px solid black; padding: 0 20px; display: flex; align-items: center; }
+        .content { padding: 30px; display: flex; flex-direction: column; gap: 20px; }
+
+        .block { border: 1px solid black; position: relative; padding: 15px; }
+        .block-dashed { border: 1px dashed black; position: relative; padding: 15px; }
+        
+        table { width: 100%; border-collapse: collapse; }
+        th, td { border: 1px solid black; padding: 10px; font-size: 11px; text-align: left; }
+        th { background: #f0f0f0; }
+
+        .btn-node { border: 1px solid black; padding: 5px 15px; font-size: 10px; font-weight: bold; cursor: pointer; text-decoration: none; color: black; }
+        .nav-item { border-bottom: 1px dashed #ccc; padding: 10px 5px; font-size: 11px; display: flex; justify-content: space-between; }
+        .active-node { background: black; color: white; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <aside class="sidebar">
+        <div class="block" style="height: 80px; margin: 10px; border-style: double; text-align: center;">
+            <br>[BH_LOGO]<br>BANGLA_HOPE
+        </div>
+        
+        <div class="block-dashed" style="margin: 10px;">
+            <div class="annotate" style="top: -10px; left: 10px;">NAV_GRP: OVERVIEW</div>
+            <div class="nav-item">> DASHBOARD</div>
+            <div class="nav-item">> ALL_STUDENTS [821]</div>
+        </div>
+
+        <div class="block-dashed" style="margin: 10px;">
+            <div class="annotate" style="top: -10px; left: 10px;">NAV_GRP: PROGRAMS</div>
+            <div class="nav-item">> LRC_HOME [124]</div>
+            <div class="nav-item">> BOARDING [147]</div>
+            <div class="nav-item">> VILLAGE [550]</div>
+            <div class="nav-item">> LOAN_PROG</div>
+            <div class="nav-item">> STAFF_CHILDREN</div>
+        </div>
+
+        <div class="block-dashed" style="margin: 10px;">
+            <div class="annotate" style="top: -10px; left: 10px;">NAV_GRP: MANAGEMENT</div>
+            <div class="nav-item active-node">> SPONSORS [312]</div>
+            <div class="nav-item">> SUBSIDIES_FINANCE</div>
+            <div class="nav-item">> REPORTS_APR</div>
+            <div class="nav-item">> THANK_YOU_LETTERS</div>
+            <div class="nav-item">> DROP_ARCHIVE</div>
+        </div>
+
+        <div class="block" style="margin-top: auto; height: 60px; margin: 10px;">
+            USER: MAIN_ADMIN<br>
+            <span style="font-size: 9px;">UID: #9928_HILI</span>
+        </div>
+    </aside>
+
+    <main class="main">
+        <header class="topbar">
+            <div style="font-size: 11px;">SCHEMA: MANAGEMENT // SPONSOR_MASTER_GRID</div>
+        </header>
+
+        <div class="content">
+            <div style="border-left: 5px solid black; padding-left: 15px; margin-bottom: 10px;">
+                <h2 style="font-size: 20px;">SPONSOR_DATABASE</h2>
+                <div style="font-size: 10px;">TOTAL_ACTIVE: 312 // YEAR: 2024</div>
+            </div>
+
+            <div class="block">
+                <div class="annotate" style="top: -10px; left: 10px;">FILTER_BAR</div>
+                <div style="display: flex; gap: 10px; margin-bottom: 15px;">
+                    <div style="border: 1px dashed black; padding: 5px; font-size: 10px; width: 250px;">SEARCH: "SPONSOR_NAME"</div>
+                    <div style="border: 1px dashed black; padding: 5px; font-size: 10px;">CAT: PRIMARY/CO-SPONSOR</div>
+                    <div class="btn-node" style="margin-left: auto;">[+] ADD_NEW_SPONSOR</div>
+                </div>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>SPONSOR_ID</th>
+                            <th>NAME_STRING</th>
+                            <th>LOCATION</th>
+                            <th>KIDS_COUNT</th>
+                            <th>OP_NODES</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>#SP-001</td>
+                            <td>JAMES O'NEILL</td>
+                            <td>USA / CALIFORNIA</td>
+                            <td>3</td>
+                            <td><a href="bh_sponsor_details_blueprint.html" class="btn-node">DETAILS</a> [EDIT]</td>
+                        </tr>
+                        <tr>
+                            <td>#SP-042</td>
+                            <td>SARAH MILLER</td>
+                            <td>UK / LONDON</td>
+                            <td>1</td>
+                            <td><a href="#" class="btn-node">DETAILS</a> [EDIT]</td>
+                        </tr>
+                        <tr>
+                            <td>#SP-089</td>
+                            <td>ROBERT WILSON</td>
+                            <td>CANADA</td>
+                            <td>5</td>
+                            <td><a href="#" class="btn-node">DETAILS</a> [EDIT]</td>
+                        </tr>
+                        <tr>
+                            <td>#SP-112</td>
+                            <td>LINDA KNIGHT</td>
+                            <td>USA / TEXAS</td>
+                            <td>2</td>
+                            <td><a href="#" class="btn-node">DETAILS</a> [EDIT]</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>B&W BLUEPRINT: STUDENT_DETAILS</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background: white;
+            color: black;
+            font-family: 'Courier New', Courier, monospace;
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .annotate { font-size: 9px; border: 1px solid black; padding: 2px 4px; position: absolute; background: white; z-index: 10; text-transform: uppercase; font-weight: bold; }
+        .sidebar { width: 252px; border-right: 2px solid black; display: flex; flex-direction: column; position: relative; }
+        .main { flex: 1; display: flex; flex-direction: column; }
+        .topbar { height: 64px; border-bottom: 2px solid black; padding: 0 20px; display: flex; align-items: center; }
+        .content { padding: 30px; display: flex; flex-direction: column; gap: 20px; }
+
+        .block { border: 1px solid black; position: relative; padding: 15px; }
+        .block-dashed { border: 1px dashed black; position: relative; padding: 15px; }
+        
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; }
+        
+        table { width: 100%; border-collapse: collapse; }
+        th, td { border: 1px solid black; padding: 8px; font-size: 10px; text-align: left; }
+        th { background: #f0f0f0; }
+
+        .btn-node { border: 1px solid black; padding: 5px 15px; font-size: 10px; font-weight: bold; cursor: pointer; text-decoration: none; color: black; }
+        .nav-item { border-bottom: 1px dashed #ccc; padding: 10px 5px; font-size: 11px; display: flex; justify-content: space-between; }
+        .active-node { background: black; color: white; font-weight: bold; }
+        
+        .field-label { font-size: 9px; font-weight: bold; text-transform: uppercase; margin-bottom: 3px; }
+        .field-value { font-size: 12px; margin-bottom: 12px; border-bottom: 1px solid #eee; }
+
+        .status-tag { border: 1px solid black; padding: 2px 6px; font-size: 10px; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <aside class="sidebar">
+        <div class="block" style="height: 80px; margin: 10px; border-style: double; text-align: center;">
+            <br>[BH_LOGO]<br>BANGLA_HOPE
+        </div>
+        
+        <div class="block-dashed" style="margin: 10px;">
+            <div class="annotate" style="top: -10px; left: 10px;">NAV_GRP: OVERVIEW</div>
+            <div class="nav-item">> DASHBOARD</div>
+            <div class="nav-item active-node">> ALL_STUDENTS [821]</div>
+        </div>
+
+        <div class="block-dashed" style="margin: 10px;">
+            <div class="annotate" style="top: -10px; left: 10px;">NAV_GRP: PROGRAMS</div>
+            <div class="nav-item">> LRC_HOME [124]</div>
+            <div class="nav-item">> BOARDING [147]</div>
+            <div class="nav-item">> VILLAGE [550]</div>
+            <div class="nav-item">> LOAN_PROG</div>
+            <div class="nav-item">> STAFF_CHILDREN</div>
+        </div>
+
+        <div class="block-dashed" style="margin: 10px;">
+            <div class="annotate" style="top: -10px; left: 10px;">NAV_GRP: MANAGEMENT</div>
+            <div class="nav-item">> SPONSORS [312]</div>
+            <div class="nav-item">> SUBSIDIES_FINANCE</div>
+            <div class="nav-item">> REPORTS_APR</div>
+            <div class="nav-item">> THANK_YOU_LETTERS</div>
+            <div class="nav-item">> DROP_ARCHIVE</div>
+        </div>
+
+        <div class="block" style="margin-top: auto; height: 60px; margin: 10px;">
+            USER: MAIN_ADMIN<br>
+            <span style="font-size: 9px;">UID: #9928_HILI</span>
+        </div>
+    </aside>
+
+    <main class="main">
+        <header class="topbar">
+            <div style="font-size: 11px;">SCHEMA: DIRECTORY // STUDENT_PROFILE // #LRC-0124</div>
+            <div style="margin-left: auto; display: flex; gap: 10px;">
+                <div class="btn-node">[EDIT_RECORD]</div>
+                <div class="btn-node">[PRINT_CASE_HISTORY]</div>
+                <a href="bh_students_blueprint.html" class="btn-node"> [BACK] </a>
+            </div>
+        </header>
+
+        <div class="content">
+            <!-- PROFILE HEADER -->
+            <div style="display: flex; gap: 20px; align-items: flex-start; margin-bottom: 10px;">
+                <div class="block" style="width: 120px; height: 140px; text-align: center;">
+                    <br><br>[PHOTO_ASSET]<br>STUDENT_IMG
+                </div>
+                <div style="flex: 1; border-left: 5px solid black; padding-left: 15px;">
+                    <h2 style="font-size: 24px;">RINA BEGUM</h2>
+                    <div style="margin-top: 5px;">
+                        <span class="status-tag">ACTIVE</span>
+                        <span class="status-tag" style="background: black; color: white;">PROGRAM: LRC_RESIDENTIAL</span>
+                    </div>
+                    <div style="font-size: 11px; margin-top: 10px;">
+                        CURRENT_ID: <strong>#LRC-0124</strong><br>
+                        PREVIOUS_IDS: <span style="text-decoration: underline;">#VLG-0344</span> (Village School Archive)
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid-2">
+                <!-- PERSONAL INFORMATION -->
+                <div class="block">
+                    <div class="annotate" style="top: -10px; left: 10px;">SEC_01: PERS_IDENTITY</div>
+                    <div class="grid-2">
+                        <div>
+                            <div class="field-label">FULL_LEGAL_NAME</div>
+                            <div class="field-value">Rina Begum</div>
+                            <div class="field-label">DATE_OF_BIRTH</div>
+                            <div class="field-value">2017-05-12 (7.2Y)</div>
+                        </div>
+                        <div>
+                            <div class="field-label">GENDER</div>
+                            <div class="field-value">FEMALE</div>
+                            <div class="field-label">ADMISSION_DATE</div>
+                            <div class="field-value">2024-01-15</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- GUARDIAN & BACKGROUND -->
+                <div class="block">
+                    <div class="annotate" style="top: -10px; left: 10px;">SEC_02: GUARDIAN_BACKGROUND</div>
+                    <div class="field-label">GUARDIAN_NAME</div>
+                    <div class="field-value">Mst. Fatema (Mother)</div>
+                    <div class="field-label">CASE_HISTORY_SUMMARY</div>
+                    <div class="field-value" style="font-size: 10px; line-height: 1.4;">
+                        Father deceased in 2022. Mother unable to provide nutritional and educational support. Transferred from Village Day School program to LRC for full residential care.
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid-2">
+                <!-- SPONSORSHIP -->
+                <div class="block">
+                    <div class="annotate" style="top: -10px; left: 10px;">SEC_03: SPONSORSHIP_DATA</div>
+                    <div class="field-label">PRIMARY_SPONSOR</div>
+                    <div class="field-value">James O'Neill (#SP-001)</div>
+                    <div class="field-label">CO_SPONSOR</div>
+                    <div class="field-value">--NONE_ASSIGNED--</div>
+                    <div class="field-label">MONTHLY_SUBSIDY</div>
+                    <div class="field-value">৳3,500</div>
+                </div>
+
+                <!-- DOCUMENTATION & COMPLIANCE -->
+                <div class="block">
+                    <div class="annotate" style="top: -10px; left: 10px;">SEC_04: COMPLIANCE_LOGS</div>
+                    <div class="field-label">APR_STATUS (ANNUAL_PROGRESS_REPORT)</div>
+                    <div class="field-value">2023_COMPLETE // 2024_PENDING</div>
+                    
+                    <div class="field-label">THANK_YOU_LETTER_CHECKLIST</div>
+                    <div style="font-size: 10px;">
+                        [X] NEW_YEAR_2024<br>
+                        [ ] MID_YEAR_2024 (DUE: JULY)<br>
+                        [X] BIRTHDAY_GREETING
+                    </div>
+                </div>
+            </div>
+
+            <!-- ACADEMIC / PROGRESS GRID -->
+            <div class="block-dashed">
+                <div class="annotate" style="top: -10px; left: 10px;">SEC_05: ACADEMIC_RECORDS</div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>YEAR/TERM</th>
+                            <th>SCHOOL_INSTITUTION</th>
+                            <th>GRADE/CLASS</th>
+                            <th>RESULT_SUMMARY</th>
+                            <th>REMARKS</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>2023 (Final)</td>
+                            <td>Hili Village School</td>
+                            <td>Class 1</td>
+                            <td>A- (82%)</td>
+                            <td>Strong in Bengali, needs help with Math.</td>
+                        </tr>
+                        <tr>
+                            <td>2024 (Term 1)</td>
+                            <td>LRC Internal School</td>
+                            <td>Class 2</td>
+                            <td>B+ (78%)</td>
+                            <td>Adjusting to residential environment.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

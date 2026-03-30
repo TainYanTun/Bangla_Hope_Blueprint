@@ -14,12 +14,13 @@
         }
 
         .annotate { font-size: 9px; border: 1px solid black; padding: 2px 4px; position: absolute; background: white; z-index: 10; text-transform: uppercase; font-weight: bold; }
-        .sidebar { width: 252px; border-right: 2px solid black; display: flex; flex-direction: column; padding: 10px; }
+        .sidebar { width: 252px; border-right: 2px solid black; display: flex; flex-direction: column; position: relative; }
         .main { flex: 1; display: flex; flex-direction: column; }
         .topbar { height: 64px; border-bottom: 2px solid black; padding: 0 20px; display: flex; align-items: center; }
         .content { padding: 30px; display: flex; flex-direction: column; gap: 20px; }
 
         .block { border: 1px solid black; position: relative; padding: 15px; }
+        .block-dashed { border: 1px dashed black; position: relative; padding: 15px; }
         .block::after { content: attr(data-id); position: absolute; bottom: 2px; right: 5px; font-size: 8px; opacity: 0.5; }
 
         /* Module Specifics */
@@ -35,15 +36,45 @@
         th { background: #f0f0f0; }
 
         .btn-node { border: 1px solid black; padding: 5px 15px; font-size: 10px; font-weight: bold; }
+
+        .nav-item { border-bottom: 1px dashed #ccc; padding: 10px 5px; font-size: 11px; display: flex; justify-content: space-between; }
+        .active-node { background: black; color: white; font-weight: bold; }
     </style>
 </head>
 <body>
 
     <aside class="sidebar">
-        <div class="block" data-id="LOGO_ASSET" style="height: 80px; margin-bottom: 20px; text-align: center;">[BH_LOGO]</div>
-        <div class="block" data-id="NAV_CORE">
-            <div style="padding:10px 0;">> DASHBOARD</div>
-            <div style="padding:10px 0; background: black; color: white;">> ALL_STUDENTS</div>
+        <div class="block" data-id="LOGO_ASSET" style="height: 80px; margin: 10px; border-style: double; text-align: center;">
+            <br>[BH_LOGO]<br>BANGLA_HOPE
+        </div>
+        
+        <div class="block-dashed" style="margin: 10px;">
+            <div class="annotate" style="top: -10px; left: 10px;">NAV_GRP: OVERVIEW</div>
+            <div class="nav-item">> DASHBOARD</div>
+            <div class="nav-item active-node">> ALL_STUDENTS [821]</div>
+        </div>
+
+        <div class="block-dashed" style="margin: 10px;">
+            <div class="annotate" style="top: -10px; left: 10px;">NAV_GRP: PROGRAMS</div>
+            <div class="nav-item">> LRC_HOME [124]</div>
+            <div class="nav-item">> BOARDING [147]</div>
+            <div class="nav-item">> VILLAGE [550]</div>
+            <div class="nav-item">> LOAN_PROG</div>
+            <div class="nav-item">> STAFF_CHILDREN</div>
+        </div>
+
+        <div class="block-dashed" style="margin: 10px;">
+            <div class="annotate" style="top: -10px; left: 10px;">NAV_GRP: MANAGEMENT</div>
+            <div class="nav-item">> SPONSORS</div>
+            <div class="nav-item">> SUBSIDIES_FINANCE</div>
+            <div class="nav-item">> REPORTS_APR</div>
+            <div class="nav-item">> THANK_YOU_LETTERS</div>
+            <div class="nav-item">> DROP_ARCHIVE</div>
+        </div>
+
+        <div class="block" style="margin-top: auto; height: 60px; margin: 10px;">
+            USER: MAIN_ADMIN<br>
+            <span style="font-size: 9px;">UID: #9928_HILI</span>
         </div>
     </aside>
 
@@ -78,6 +109,11 @@
                             <tr><td>#LRC-0124</td><td>RINA BEGUM</td><td>7.2Y</td><td>JAMES_O</td><td>[VIEW] [EDIT]</td></tr>
                             <tr><td>#LRC-0109</td><td>M. KARIM</td><td>11.0Y</td><td>SARAH_M</td><td>[VIEW] [EDIT]</td></tr>
                             <tr><td>#BRD-0255</td><td>F. AKTER</td><td>9.5Y</td><td>--NONE--</td><td>[VIEW] [EDIT]</td></tr>
+                            <tr><td>#VLG-0512</td><td>S. HOSSAIN</td><td>6.0Y</td><td>ROBERT_W</td><td>[VIEW] [EDIT]</td></tr>
+                            <tr><td>#VLG-0488</td><td>J. KHATUN</td><td>8.1Y</td><td>LINDA_K</td><td>[VIEW] [EDIT]</td></tr>
+                            <tr><td>#LON-0021</td><td>A. RAHMAN</td><td>19.5Y</td><td>JAMES_O [CO]</td><td>[VIEW] [EDIT]</td></tr>
+                            <tr><td>#STF-0092</td><td>N. ISLAM</td><td>10.0Y</td><td>--NONE--</td><td>[VIEW] [EDIT]</td></tr>
+                            <tr><td>#BRD-0210</td><td>T. AHMED</td><td>12.4Y</td><td>MICHAEL_B</td><td>[VIEW] [EDIT]</td></tr>
                         </tbody>
                     </table>
 

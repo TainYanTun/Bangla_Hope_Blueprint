@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>B&W BLUEPRINT: LRC_PROGRAM_HOME</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { background: white; color: black; font-family: 'Courier New', Courier, monospace; display: flex; min-height: 100vh; }
+        .annotate { font-size: 9px; border: 1px solid black; padding: 2px 4px; position: absolute; background: white; z-index: 10; text-transform: uppercase; font-weight: bold; }
+        .sidebar { width: 252px; border-right: 2px solid black; display: flex; flex-direction: column; position: relative; }
+        .main { flex: 1; display: flex; flex-direction: column; }
+        .topbar { height: 64px; border-bottom: 2px solid black; padding: 0 20px; display: flex; align-items: center; }
+        .content { padding: 30px; display: flex; flex-direction: column; gap: 20px; }
+        .block { border: 1px solid black; position: relative; padding: 15px; }
+        .block-dashed { border: 1px dashed black; position: relative; padding: 15px; }
+        .nav-item { border-bottom: 1px dashed #ccc; padding: 10px 5px; font-size: 11px; display: flex; justify-content: space-between; }
+        .active-node { background: black; color: white; font-weight: bold; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { border: 1px solid black; padding: 8px; font-size: 10px; text-align: left; }
+        th { background: #f0f0f0; }
+        .btn-node { border: 1px solid black; padding: 5px 15px; font-size: 10px; font-weight: bold; cursor: pointer; text-decoration: none; color: black; }
+    </style>
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="block" style="height: 80px; margin: 10px; border-style: double; text-align: center;"><br>[BH_LOGO]<br>BANGLA_HOPE</div>
+        <div class="block-dashed" style="margin: 10px;">
+            <div class="annotate" style="top: -10px; left: 10px;">NAV_GRP: OVERVIEW</div>
+            <div class="nav-item">> DASHBOARD</div>
+            <div class="nav-item">> ALL_STUDENTS [821]</div>
+        </div>
+        <div class="block-dashed" style="margin: 10px;">
+            <div class="annotate" style="top: -10px; left: 10px;">NAV_GRP: PROGRAMS</div>
+            <div class="nav-item active-node">> LRC_HOME [124]</div>
+            <div class="nav-item">> BOARDING [147]</div>
+            <div class="nav-item">> VILLAGE [550]</div>
+            <div class="nav-item">> LOAN_PROG</div>
+            <div class="nav-item">> STAFF_CHILDREN</div>
+        </div>
+        <div class="block-dashed" style="margin: 10px;">
+            <div class="annotate" style="top: -10px; left: 10px;">NAV_GRP: MANAGEMENT</div>
+            <div class="nav-item">> SPONSORS [312]</div>
+            <div class="nav-item">> SUBSIDIES_FINANCE</div>
+            <div class="nav-item">> REPORTS_APR</div>
+            <div class="nav-item">> THANK_YOU_LETTERS</div>
+            <div class="nav-item">> DROP_ARCHIVE</div>
+        </div>
+        <div class="block" style="margin-top: auto; height: 60px; margin: 10px;">USER: MAIN_ADMIN<br><span style="font-size: 9px;">UID: #9928_HILI</span></div>
+    </aside>
+
+    <main class="main">
+        <header class="topbar">
+            <div style="font-size: 11px;">SCHEMA: PROGRAM // LRC_RESIDENTIAL // DASHBOARD</div>
+            <div style="margin-left: auto; display: flex; gap: 10px;">
+                <div class="btn-node">[+] ADMIT_INFANT_0-3</div>
+                <div class="btn-node">[+] ADMIT_CHILD_4+</div>
+            </div>
+        </header>
+        <div class="content">
+            <div style="border-left: 5px solid black; padding-left: 15px; margin-bottom: 10px;">
+                <h2 style="font-size: 20px;">LOVE_RECEIVING_CENTER (LRC)</h2>
+                <div style="font-size: 10px;">CAMPUS: HILI_MAIN // TOTAL_KIDS: 124</div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                <div class="block">
+                    <div class="annotate" style="top: -10px; left: 10px;">RESIDENTIAL_UNITS</div>
+                    <div style="font-size: 11px; line-height: 2;">
+                        [ ] HOUSE_A (Infant/Toddler): 12/15<br>
+                        [ ] HOUSE_B (Boys 6-12): 45/50<br>
+                        [ ] HOUSE_C (Girls 6-12): 40/50<br>
+                        [ ] HOUSE_D (Senior/College): 27/30
+                    </div>
+                </div>
+                <div class="block">
+                    <div class="annotate" style="top: -10px; left: 10px;">LRC_SPECIFIC_MODULES</div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                        <div class="btn-node" style="height: 50px; display: flex; align-items: center; justify-content: center; text-align: center;">CASE_HISTORY<br>ARCHIVE</div>
+                        <div class="btn-node" style="height: 50px; display: flex; align-items: center; justify-content: center; text-align: center;">VACCINATION<br>LOGS</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="block">
+                <div class="annotate" style="top: -10px; left: 10px;">STUDENT_ROSTER: LRC_RESIDENTIAL</div>
+                <table>
+                    <thead>
+                        <tr><th>UID</th><th>NAME_STRING</th><th>HOUSE_UNIT</th><th>SPONSOR</th><th>STATUS</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>#LRC-0124</td><td>RINA BEGUM</td><td>HOUSE_C</td><td>JAMES_O</td><td>STABLE</td></tr>
+                        <tr><td>#LRC-0109</td><td>M. KARIM</td><td>HOUSE_B</td><td>SARAH_M</td><td>STABLE</td></tr>
+                        <tr><td>#LRC-0145</td><td>BABY_ANIKA</td><td>HOUSE_A</td><td>--NONE--</td><td>NEW_ADMIT</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
