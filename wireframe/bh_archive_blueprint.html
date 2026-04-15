@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>B&W BLUEPRINT: ARCHIVE_SYSTEM</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background: white;
+            color: black;
+            font-family: 'Courier New', Courier, monospace;
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .annotate { font-size: 9px; border: 1px solid black; padding: 2px 4px; position: absolute; background: white; z-index: 10; text-transform: uppercase; font-weight: bold; }
+        .sidebar { width: 252px; border-right: 2px solid black; display: flex; flex-direction: column; position: relative; }
+        .main { flex: 1; display: flex; flex-direction: column; }
+        .topbar { height: 64px; border-bottom: 2px solid black; padding: 0 20px; display: flex; align-items: center; }
+        .content { padding: 30px; display: flex; flex-direction: column; gap: 20px; }
+
+        .block { border: 1px solid black; position: relative; padding: 15px; }
+        .block-dashed { border: 1px dashed black; position: relative; padding: 15px; }
+        .block::after { content: attr(data-id); position: absolute; bottom: 2px; right: 5px; font-size: 8px; opacity: 0.5; }
+
+        .tabs { display: flex; border-bottom: 1px solid black; }
+        .tab-node { padding: 10px 15px; border-right: 1px solid black; font-size: 11px; cursor: pointer; }
+        .tab-node.active { background: black; color: white; font-weight: bold; }
+
+        .filter-row { display: flex; gap: 10px; margin: 15px 0; align-items: center; }
+        .filter-box { border: 1px dashed black; height: 30px; padding: 5px; font-size: 10px; display: flex; align-items: center; }
+
+        table { width: 100%; border-collapse: collapse; }
+        th, td { border: 1px solid black; padding: 10px; font-size: 11px; text-align: left; }
+        th { background: #f0f0f0; }
+
+        .btn-node { border: 1px solid black; padding: 5px 15px; font-size: 10px; font-weight: bold; cursor: pointer; }
+        .btn-danger { border-style: double; }
+
+        .nav-item { border-bottom: 1px dashed #ccc; padding: 10px 5px; font-size: 11px; display: flex; justify-content: space-between; text-decoration: none; color: black; }
+        .active-node { background: black; color: white; font-weight: bold; }
+
+        .status-tag { border: 1px solid black; padding: 2px 6px; font-size: 9px; text-transform: uppercase; }
+    </style>
+</head>
+<body>
+
+    <aside class="sidebar">
+        <div class="block" data-id="LOGO_ASSET" style="height: 80px; margin: 10px; border-style: double; text-align: center;">
+            <br>[BH_LOGO]<br>BANGLA_HOPE
+        </div>
+        
+        <div class="block-dashed" style="margin: 10px;">
+            <div class="annotate" style="top: -10px; left: 10px;">NAV_GRP: OVERVIEW</div>
+            <a href="../bh_dashboard.html" class="nav-item">> DASHBOARD</a>
+            <a href="bh_students_blueprint.html" class="nav-item">> ALL_STUDENTS [821]</a>
+        </div>
+
+        <div class="block-dashed" style="margin: 10px;">
+            <div class="annotate" style="top: -10px; left: 10px;">NAV_GRP: PROGRAMS</div>
+            <a href="bh_lrc_blueprint.html" class="nav-item">> LRC_HOME [124]</a>
+            <a href="bh_boarding_blueprint.html" class="nav-item">> BOARDING [147]</a>
+            <a href="bh_village_blueprint.html" class="nav-item">> VILLAGE [550]</a>
+            <a href="bh_loan_blueprint.html" class="nav-item">> LOAN_PROG</a>
+            <a href="bh_staff_children_blueprint.html" class="nav-item">> STAFF_CHILDREN</a>
+        </div>
+
+        <div class="block-dashed" style="margin: 10px;">
+            <div class="annotate" style="top: -10px; left: 10px;">NAV_GRP: MANAGEMENT</div>
+            <a href="bh_sponsors_blueprint.html" class="nav-item">> SPONSORS</a>
+            <div class="nav-item">> SUBSIDIES_FINANCE</div>
+            <div class="nav-item">> REPORTS_APR</div>
+            <div class="nav-item">> THANK_YOU_LETTERS</div>
+            <div class="nav-item active-node">> DROP_ARCHIVE</div>
+        </div>
+
+        <div class="block" style="margin-top: auto; height: 60px; margin: 10px;">
+            USER: MAIN_ADMIN<br>
+            <span style="font-size: 9px;">UID: #9928_HILI</span>
+        </div>
+    </aside>
+
+    <main class="main">
+        <header class="topbar">
+            <div style="font-size: 11px;">SCHEMA: ARCHIVE // DROP_LIST_STORAGE</div>
+        </header>
+
+        <div class="content">
+            <div class="block" data-id="MODULE: ARCHIVE_SYSTEM" style="padding: 0;">
+                <div class="tabs">
+                    <div class="tab-node active">TOTAL_DROPPED_LIST</div>
+                    <div class="tab-node">DROP_REASONS_AGG</div>
+                    <div class="tab-node">RECOVERY_LOGS</div>
+                </div>
+                
+                <div style="padding: 20px;">
+                    <div class="annotate" style="top: 45px; left: 20px;">FILTER_BLOCK_V2</div>
+                    <div class="filter-row">
+                        <div class="filter-box" style="width: 220px;">SEARCH: "STUDENT_UID_OR_NAME"</div>
+                        <div class="filter-box">SEL: DROP_YEAR</div>
+                        <div class="filter-box">SEL: ORIGINAL_PROG</div>
+                        <div class="btn-node" style="margin-left: auto;">[PRINT_DROP_LIST]</div>
+                    </div>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>UID_STAMP</th>
+                                <th>NAME_STRING</th>
+                                <th>DROP_DATE</th>
+                                <th>PREV_PROG</th>
+                                <th>DROP_REASON</th>
+                                <th>OP_NODES</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>#LRC-0088</td>
+                                <td>ABUL KASHM</td>
+                                <td>2024-03-12</td>
+                                <td>LRC_HOME</td>
+                                <td>AGED_OUT</td>
+                                <td><span class="btn-node">[RESTORE]</span> <span class="btn-node">[VIEW_HIST]</span></td>
+                            </tr>
+                            <tr>
+                                <td>#VLG-0312</td>
+                                <td>S. TARA</td>
+                                <td>2023-11-05</td>
+                                <td>VILLAGE</td>
+                                <td>FAMILY_RELOC</td>
+                                <td><span class="btn-node">[RESTORE]</span> <span class="btn-node">[VIEW_HIST]</span></td>
+                            </tr>
+                            <tr>
+                                <td>#BRD-0145</td>
+                                <td>JAMAL H.</td>
+                                <td>2023-09-20</td>
+                                <td>BOARDING</td>
+                                <td>TRANSFER_OUT</td>
+                                <td><span class="btn-node">[RESTORE]</span> <span class="btn-node">[VIEW_HIST]</span></td>
+                            </tr>
+                            <tr>
+                                <td>#LRC-0045</td>
+                                <td>M. SULTANA</td>
+                                <td>2023-05-15</td>
+                                <td>LRC_HOME</td>
+                                <td>COMPLETED</td>
+                                <td><span class="btn-node">[RESTORE]</span> <span class="btn-node">[VIEW_HIST]</span></td>
+                            </tr>
+                            <tr>
+                                <td>#VLG-0421</td>
+                                <td>R. ISLAM</td>
+                                <td>2022-12-01</td>
+                                <td>VILLAGE</td>
+                                <td>DROPPED_OUT</td>
+                                <td><span class="btn-node">[RESTORE]</span> <span class="btn-node">[VIEW_HIST]</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div style="margin-top: 20px; text-align: center; font-size: 9px; border-top: 1px dashed black; padding-top: 15px;">
+                        PAGINATION: [1] [2] [3] ... [NEXT] // TOTAL_ARCHIVED: 48_RECORDS
+                    </div>
+                </div>
+            </div>
+
+            <!-- ANALYTICS PREVIEW BLOCK -->
+            <div class="block-dashed" data-id="ANALYTICS: DROP_METRICS">
+                <div class="annotate" style="top: -10px; right: 20px;">WIDGET_V1</div>
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">
+                    <div style="font-size: 11px;">
+                        <strong>TOP_REASONS:</strong><br>
+                        1. AGED_OUT (42%)<br>
+                        2. RELOCATED (25%)<br>
+                        3. COMPLETED (18%)
+                    </div>
+                    <div style="font-size: 11px;">
+                        <strong>DROP_BY_PROG:</strong><br>
+                        LRC: 12<br>
+                        VLG: 22<br>
+                        BRD: 14
+                    </div>
+                    <div style="font-size: 11px; text-align: right;">
+                        <span class="status-tag">SYSTEM_HEALTH: STABLE</span><br>
+                        <span style="font-size: 8px;">LAST_SYNC: 08-APR-2026</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+</body>
+</html>

@@ -17,7 +17,7 @@
         .sidebar { width: 252px; border-right: 2px solid black; display: flex; flex-direction: column; position: relative; }
         .main { flex: 1; display: flex; flex-direction: column; }
         .topbar { height: 64px; border-bottom: 2px solid black; padding: 0 20px; display: flex; align-items: center; }
-        .content { padding: 30px; display: flex; flex-direction: column; gap: 20px; }
+        .content { padding: 30px; display: flex; flex-direction: column; gap: 30px; }
 
         .block { border: 1px solid black; position: relative; padding: 15px; }
         .block-dashed { border: 1px dashed black; position: relative; padding: 15px; }
@@ -81,7 +81,7 @@
             <div style="font-size: 11px;">SCHEMA: DIRECTORY // STUDENT_PROFILE // #LRC-0124</div>
             <div style="margin-left: auto; display: flex; gap: 10px;">
                 <div class="btn-node">[EDIT_RECORD]</div>
-                <div class="btn-node">[PRINT_CASE_HISTORY]</div>
+                <div class="btn-node">[GENERATE_CASE_HISTORY]</div>
                 <a href="bh_students_blueprint.html" class="btn-node"> [BACK] </a>
             </div>
         </header>
@@ -100,67 +100,108 @@
                     </div>
                     <div style="font-size: 11px; margin-top: 10px;">
                         CURRENT_ID: <strong>#LRC-0124</strong><br>
-                        PREVIOUS_IDS: <span style="text-decoration: underline;">#VLG-0344</span> (Village School Archive)
+                        PREVIOUS_IDS: <span style="text-decoration: underline;">#VLG-0344</span> (Village School Transitioned)
                     </div>
                 </div>
             </div>
 
-            <div class="grid-2">
-                <!-- PERSONAL INFORMATION -->
-                <div class="block">
-                    <div class="annotate" style="top: -10px; left: 10px;">SEC_01: PERS_IDENTITY</div>
-                    <div class="grid-2">
-                        <div>
-                            <div class="field-label">FULL_LEGAL_NAME</div>
-                            <div class="field-value">Rina Begum</div>
-                            <div class="field-label">DATE_OF_BIRTH</div>
-                            <div class="field-value">2017-05-12 (7.2Y)</div>
+            <!-- TAB NAVIGATION (New Line) -->
+            <div style="margin-top: 10px; margin-bottom: 20px; display: flex; gap: 20px; border-bottom: 1px solid black;">
+                <div style="padding: 5px; font-weight: bold; border-bottom: 2px solid black;">[1] GENERAL_PROFILE</div>
+                <div style="padding: 5px;">[2] JOURNEY_HISTORY</div>
+                <div style="padding: 5px;">[3] FINANCE</div>
+            </div>
+
+            <!-- TAB 1: GENERAL PROFILE -->
+            <div id="section-general">
+                <div class="grid-2">
+                    <!-- PERSONAL INFORMATION -->
+                    <div class="block">
+                        <div class="annotate" style="top: -10px; left: 10px;">SEC_01: PERS_IDENTITY</div>
+                        <div class="grid-2">
+                            <div>
+                                <div class="field-label">FULL_LEGAL_NAME</div>
+                                <div class="field-value">Rina Begum</div>
+                                <div class="field-label">DATE_OF_BIRTH</div>
+                                <div class="field-value">2017-05-12 (7.2Y)</div>
+                                <div class="field-label">RELIGION</div>
+                                <div class="field-value">ISLAM</div>
+                            </div>
+                            <div>
+                                <div class="field-label">GENDER</div>
+                                <div class="field-value">FEMALE</div>
+                                <div class="field-label">ADMISSION_DATE</div>
+                                <div class="field-value">2024-01-15</div>
+                            </div>
                         </div>
-                        <div>
-                            <div class="field-label">GENDER</div>
-                            <div class="field-value">FEMALE</div>
-                            <div class="field-label">ADMISSION_DATE</div>
-                            <div class="field-value">2024-01-15</div>
+                    </div>
+
+                    <!-- FAMILY BACKGROUND -->
+                    <div class="block">
+                        <div class="annotate" style="top: -10px; left: 10px;">SEC_02: FAMILY_BACKGROUND</div>
+                        <div class="grid-2">
+                            <div>
+                                <div class="field-label">FATHER_NAME</div>
+                                <div class="field-value">Late Md. Abdur Rashid</div>
+                                <div class="field-label">MOTHER_NAME</div>
+                                <div class="field-value">Mst. Fatema</div>
+                            </div>
+                            <div>
+                                <div class="field-label">SIBLINGS</div>
+                                <div class="field-value">1 Brother, 2 Sisters</div>
+                                <div class="field-label">CONTACT_INFO</div>
+                                <div class="field-value">01712-XXXXXX</div>
+                            </div>
+                        </div>
+                    </div>                </div>
+
+                <div class="grid-2">
+                    <!-- SPONSORSHIP -->
+                    <div class="block">
+                        <div class="annotate" style="top: -10px; left: 10px;">SEC_03: SPONSORSHIP_DATA</div>
+                        <div class="field-label">PRIMARY_SPONSOR</div>
+                        <div class="field-value">James O'Neill (#SP-001)</div>
+                        <div class="field-label">CO_SPONSOR</div>
+                        <div class="field-value">--NONE_ASSIGNED--</div>
+                        <div class="field-label">MONTHLY_SUBSIDY</div>
+                        <div class="field-value">৳3,500</div>
+                    </div>
+
+                    <!-- DOCUMENTATION & COMPLIANCE -->
+                    <div class="block">
+                        <div class="annotate" style="top: -10px; left: 10px;">SEC_04: COMPLIANCE_LOGS</div>
+                        <div class="field-label">APR_STATUS (ANNUAL_PROGRESS_REPORT)</div>
+                        <div class="field-value">2023_COMPLETE // 2024_PENDING</div>
+                        
+                        <div class="field-label">THANK_YOU_LETTER_CHECKLIST</div>
+                        <div style="font-size: 10px;">
+                            [X] NEW_YEAR_2024<br>
+                            [ ] MID_YEAR_2024 (DUE: JULY)<br>
+                            [X] BIRTHDAY_GREETING
                         </div>
                     </div>
                 </div>
 
-                <!-- GUARDIAN & BACKGROUND -->
+                <!-- SEC_06: CASE HISTORY NARRATIVE (Full Width) -->
                 <div class="block">
-                    <div class="annotate" style="top: -10px; left: 10px;">SEC_02: GUARDIAN_BACKGROUND</div>
-                    <div class="field-label">GUARDIAN_NAME</div>
-                    <div class="field-value">Mst. Fatema (Mother)</div>
-                    <div class="field-label">CASE_HISTORY_SUMMARY</div>
-                    <div class="field-value" style="font-size: 10px; line-height: 1.4;">
-                        Father deceased in 2022. Mother unable to provide nutritional and educational support. Transferred from Village Day School program to LRC for full residential care.
+                    <div class="annotate" style="top: -10px; left: 10px;">SEC_06: CASE_HISTORY_NARRATIVE</div>
+                    <div class="field-label">SITUATION_OVERVIEW</div>
+                    <div class="field-value" style="font-size: 10px; line-height: 1.4; border-bottom: none;">
+                        [LONG_FORM_TEXT_BLOCK: Historical context...]
                     </div>
                 </div>
             </div>
 
-            <div class="grid-2">
-                <!-- SPONSORSHIP -->
-                <div class="block">
-                    <div class="annotate" style="top: -10px; left: 10px;">SEC_03: SPONSORSHIP_DATA</div>
-                    <div class="field-label">PRIMARY_SPONSOR</div>
-                    <div class="field-value">James O'Neill (#SP-001)</div>
-                    <div class="field-label">CO_SPONSOR</div>
-                    <div class="field-value">--NONE_ASSIGNED--</div>
-                    <div class="field-label">MONTHLY_SUBSIDY</div>
-                    <div class="field-value">৳3,500</div>
-                </div>
-
-                <!-- DOCUMENTATION & COMPLIANCE -->
-                <div class="block">
-                    <div class="annotate" style="top: -10px; left: 10px;">SEC_04: COMPLIANCE_LOGS</div>
-                    <div class="field-label">APR_STATUS (ANNUAL_PROGRESS_REPORT)</div>
-                    <div class="field-value">2023_COMPLETE // 2024_PENDING</div>
-                    
-                    <div class="field-label">THANK_YOU_LETTER_CHECKLIST</div>
-                    <div style="font-size: 10px;">
-                        [X] NEW_YEAR_2024<br>
-                        [ ] MID_YEAR_2024 (DUE: JULY)<br>
-                        [X] BIRTHDAY_GREETING
-                    </div>
+            <!-- TAB 2: JOURNEY HISTORY (NOTATION) -->
+            <div class="block-dashed" style="background: #f9f9f9;">
+                <div class="annotate" style="top: -10px; left: 10px;">SEC_07: JOURNEY_TIMELINE_LOGIC</div>
+                <div style="font-size: 10px; line-height: 1.6;">
+                    * VERTICAL_TIMELINE_WIDGET<br>
+                    * [JAN 2024] - ADMITTED_TO_LRC (#LRC-0124) [STATUS: ACTIVE]<br>
+                    * [JAN 2024] - TRANSITIONED_FROM_VILLAGE_SCHOOLS [LOG]<br>
+                    * [MAR 2022] - ADMITTED_TO_VILLAGE_SCHOOL (#VLG-0344) [STATUS: ARCHIVED]<br>
+                    ---<br>
+                    * GLOBAL_MASTER_ID: 550e8400-e29b-41d4-a716-446655440000
                 </div>
             </div>
 

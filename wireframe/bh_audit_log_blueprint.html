@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>B&W BLUEPRINT: SYSTEM_AUDIT_LOG</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { background: white; color: black; font-family: 'Courier New', Courier, monospace; display: flex; min-height: 100vh; }
+        .annotate { font-size: 9px; border: 1px solid black; padding: 2px 4px; position: absolute; background: white; z-index: 10; text-transform: uppercase; font-weight: bold; }
+        .sidebar { width: 252px; border-right: 2px solid black; display: flex; flex-direction: column; position: relative; }
+        .main { flex: 1; display: flex; flex-direction: column; }
+        .topbar { height: 64px; border-bottom: 2px solid black; padding: 0 20px; display: flex; align-items: center; }
+        .content { padding: 30px; display: flex; flex-direction: column; gap: 20px; }
+        .block { border: 1px solid black; position: relative; padding: 15px; }
+        .block-dashed { border: 1px dashed black; position: relative; padding: 15px; }
+        .nav-item { border-bottom: 1px dashed #ccc; padding: 10px 5px; font-size: 11px; display: flex; justify-content: space-between; text-decoration: none; color: black; }
+        .active-node { background: black; color: white; font-weight: bold; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { border: 1px solid black; padding: 8px; font-size: 10px; text-align: left; }
+        th { background: #f0f0f0; }
+        .filter-row { display: flex; gap: 10px; margin-bottom: 15px; align-items: center; }
+        .filter-box { border: 1px dashed black; height: 30px; padding: 5px; font-size: 10px; display: flex; align-items: center; }
+    </style>
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="block" style="height: 80px; margin: 10px; border-style: double; text-align: center;"><br>[BH_LOGO]<br>BANGLA_HOPE</div>
+        <div class="block-dashed" style="margin: 10px;">
+            <div class="annotate" style="top: -10px; left: 10px;">NAV_GRP: OVERVIEW</div>
+            <a href="../bh_dashboard.html" class="nav-item">> DASHBOARD</a>
+            <a href="bh_students_blueprint.html" class="nav-item">> ALL_STUDENTS [821]</a>
+        </div>
+        <div class="block-dashed" style="margin: 10px;">
+            <div class="annotate" style="top: -10px; left: 10px;">NAV_GRP: PROGRAMS</div>
+            <a href="bh_lrc_blueprint.html" class="nav-item">> LRC_HOME</a>
+            <a href="bh_boarding_blueprint.html" class="nav-item">> BOARDING</a>
+            <a href="bh_village_blueprint.html" class="nav-item">> VILLAGE</a>
+            <a href="bh_loan_blueprint.html" class="nav-item">> LOAN_PROG</a>
+        </div>
+        <div class="block-dashed" style="margin: 10px;">
+            <div class="annotate" style="top: -10px; left: 10px;">NAV_GRP: MANAGEMENT</div>
+            <a href="bh_sponsors_blueprint.html" class="nav-item">> SPONSORS</a>
+            <div class="nav-item">> SUBSIDIES_FINANCE</div>
+            <div class="nav-item">> REPORTS_APR</div>
+            <div class="nav-item active-node">> SYSTEM_AUDIT [ACT]</div>
+            <a href="bh_archive_blueprint.html" class="nav-item">> DROP_ARCHIVE</a>
+        </div>
+        <div class="block" style="margin-top: auto; height: 60px; margin: 10px;">USER: MAIN_ADMIN<br><span style="font-size: 9px;">UID: #9928_HILI</span></div>
+    </aside>
+
+    <main class="main">
+        <header class="topbar">
+            <div style="font-size: 11px;">SCHEMA: ADMIN // SECURITY // MASTER_AUDIT_LOG</div>
+        </header>
+        <div class="content">
+            <div style="border-left: 5px solid black; padding-left: 15px; margin-bottom: 10px;">
+                <h2 style="font-size: 20px;">SYSTEM_WIDE_AUDIT_MASTER</h2>
+                <div style="font-size: 10px;">TRACKING: DATA_MUTATIONS // STATUS: MONITORING</div>
+            </div>
+
+            <div class="filter-row">
+                <div class="annotate" style="top: -10px; left: 0;">LOG_FILTERS</div>
+                <div class="filter-box" style="width: 150px;">DATE: LAST_24H</div>
+                <div class="filter-box" style="width: 120px;">USER: ALL</div>
+                <div class="filter-box" style="width: 120px;">MODULE: ALL</div>
+                <div class="filter-box" style="flex: 1;">SEARCH: "TARGET_UID"</div>
+            </div>
+
+            <div class="block">
+                <div class="annotate" style="top: -10px; left: 10px;">EVENT_STREAM_V1</div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>TIMESTAMP_UTC</th>
+                            <th>USER_NODE</th>
+                            <th>MODULE_CAT</th>
+                            <th>ACTION_TYPE</th>
+                            <th>TARGET_REF</th>
+                            <th>MUTATION_DETAIL</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>2026-04-08 09:42</td>
+                            <td>ADMIN_9928</td>
+                            <td>LRC_PROG</td>
+                            <td>ADD_RECORD</td>
+                            <td>#LRC-0124</td>
+                            <td>NEW_ADMISSION: RINA BEGUM</td>
+                        </tr>
+                        <tr>
+                            <td>2026-04-08 09:15</td>
+                            <td>SUB_ADM_04</td>
+                            <td>LOAN_PROG</td>
+                            <td>EDIT_VAL</td>
+                            <td>#LON-0021</td>
+                            <td>SUBSIDY: ৳1200 -> ৳1500</td>
+                        </tr>
+                        <tr>
+                            <td>2026-04-08 08:30</td>
+                            <td>ADMIN_9928</td>
+                            <td>ARCHIVE</td>
+                            <td>RESTORE</td>
+                            <td>#VLG-0312</td>
+                            <td>RESTORED FROM DROP_LIST (RELOC_RET)</td>
+                        </tr>
+                        <tr>
+                            <td>2026-04-07 16:45</td>
+                            <td>VLG_SUP_01</td>
+                            <td>VLG_PROG</td>
+                            <td>UPLOAD</td>
+                            <td>#VLG-0512</td>
+                            <td>PHOTO_UPDATE: STUDENT_PROFILE</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div style="margin-top: 15px; text-align: center; font-size: 9px;">PAGINATION: [1] [2] [3] ... [99+] // TOTAL_EVENTS: 12,452</div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

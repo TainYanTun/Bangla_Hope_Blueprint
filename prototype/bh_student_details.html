@@ -66,11 +66,14 @@
     .btn-primary { display: inline-flex; align-items: center; padding: 6px 14px; background: var(--accent-teal); border: 1px solid var(--accent-teal); border-radius: 6px; font-size: 12px; font-weight: 600; color: white; text-decoration: none; transition: all 0.2s; cursor: pointer; }
     .btn-primary:hover { background: #1e5c78; }
 
-    .content { padding: 32px; flex: 1; display: flex; flex-direction: column; gap: 24px; }
+    .content { padding: 32px; flex: 1; display: flex; flex-direction: column; gap: 32px; }
+
+    /* TAB CONTAINERS - Added spacing */
+    #tab-general, #tab-history { display: flex; flex-direction: column; gap: 32px; }
 
     /* HEADER - Wireframe Layout (Photo + Info) */
     .profile-header-wire { display: flex; gap: 24px; align-items: flex-start; margin-bottom: 8px; }
-    .photo-asset { width: 120px; height: 140px; background: var(--surface-subtle); border: 1px solid var(--border-strong); border-radius: var(--radius-sm); display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--text-light); font-size: 10px; font-weight: 700; text-transform: uppercase; gap: 8px; }
+    .photo-asset { width: 120px; height: 140px; background: var(--surface-subtle); border: 1.5px solid var(--border-strong); border-radius: var(--radius-sm); display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--text-light); font-size: 10px; font-weight: 700; text-transform: uppercase; gap: 8px; }
     .photo-asset svg { width: 32px; height: 32px; opacity: 0.4; }
     
     .header-info { flex: 1; border-left: 4px solid var(--primary); padding-left: 20px; }
@@ -83,6 +86,26 @@
     .header-meta { font-size: 13px; color: var(--text-muted); margin-top: 16px; line-height: 1.5; }
     .header-meta strong { color: var(--text-main); }
     .header-meta span { text-decoration: underline; cursor: pointer; }
+
+    /* TABS SYSTEM - RE-ALIGNED */
+    .profile-tabs { display: flex; gap: 32px; border-bottom: 1px solid var(--border); margin-top: 24px; }
+    .tab-item { padding: 12px 4px; font-size: 13px; font-weight: 700; color: var(--text-muted); cursor: pointer; border-bottom: 2px solid transparent; transition: all 0.2s; text-transform: uppercase; letter-spacing: 0.05em; }
+    .tab-item:hover { color: var(--primary); }
+    .tab-item.active { color: var(--accent-teal); border-bottom-color: var(--accent-teal); }
+
+    /* JOURNEY TIMELINE */
+    .timeline { position: relative; padding-left: 32px; margin-top: 10px; }
+    .timeline::before { content: ''; position: absolute; left: 11px; top: 0; bottom: 0; width: 2px; background: var(--border-strong); }
+    .timeline-item { position: relative; margin-bottom: 32px; }
+    .timeline-item:last-child { margin-bottom: 0; }
+    .timeline-marker { position: absolute; left: -32px; top: 4px; width: 24px; height: 24px; border-radius: 50%; background: var(--surface); border: 2px solid var(--accent-teal); display: flex; align-items: center; justify-content: center; z-index: 2; }
+    .timeline-marker.archived { border-color: var(--text-light); }
+    .timeline-marker::after { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--accent-teal); }
+    .timeline-marker.archived::after { background: var(--text-light); }
+    .timeline-content { background: var(--surface-subtle); padding: 16px; border-radius: var(--radius-sm); border: 1px solid var(--border); }
+    .timeline-date { font-size: 11px; font-weight: 800; color: var(--text-muted); text-transform: uppercase; margin-bottom: 4px; }
+    .timeline-title { font-size: 15px; font-weight: 700; color: var(--primary); display: flex; align-items: center; gap: 8px; }
+    .timeline-desc { font-size: 13px; color: var(--text-muted); margin-top: 8px; }
 
     /* GRID & CARDS */
     .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
@@ -118,55 +141,36 @@
   <!-- SIDEBAR - Exactly from bh_dashboard.html -->
   <nav class="sidebar">
     <div class="sidebar-logo">
-      <div class="logo-img"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIcAAABNCAYAAACMlHfYAAAEDmlDQ1BrQ0dDb2xvclNwYWNlR2VuZXJpY1JHQgAAOI2NVV1oHFUUPpu5syskzoPUpqaSDv41lLRsUtGE2uj+ZbNt3CyTbLRBkMns3Z1pJjPj/KRpKT4UQRDBqOCT4P9bwSchaqvtiy2itFCiBIMo+ND6R6HSFwnruTOzu5O4a73L3PnmnO9+595z7t4LkLgsW5beJQIsGq4t5dPis8fmxMQ6dMF90A190C0rjpUqlSYBG+PCv9rt7yDG3tf2t/f/Z+uuUEcBiN2F2Kw4yiLiZQD+FcWyXYAEQfvICddi+AnEO2ycIOISw7UAVxieD/Cyz5mRMohfRSwoqoz+xNuIB+cj9loEB3Pw2448NaitKSLLRck2q5pOI9O9g/t/tkXda8Tbg0+PszB9FN8DuPaXKnKW4YcQn1Xk3HSIry5ps8UQ/2W5aQnxIwBdu7yFcgrxPsRjVXu8HOh0qao30cArp9SZZxDfg3h1wTzKxu5E/LUxX5wKdX5SnAzmDx4A4OIqLbB69yMesE1pKojLjVdoNsfyiPi45hZmAn3uLWdpOtfQOaVmikEs7ovj8hFWpz7EV6mel0L9Xy23FMYlPYZenAx0yDB1/PX6dledmQjikjkXCxqMJS9WtfFCyH9XtSekEF+2dH+P4tzITduTygGfv58a5VCTH5PtXD7EFZiNyUDBhHnsFTBgE0SQIA9pfFtgo6cKGuhooeilaKH41eDs38Ip+f4At1Rq/sjr6NEwQqb/I/DQqsLvaFUjvAx+eWirddAJZnAj1DFJL0mSg/gcIpPkMBkhoyCSJ8lTZIxk0TpKDjXHliJzZPO50dR5ASNSnzeLvIvod0HG/mdkmOC0z8VKnzcQ2M/Yz2vKldduXjp9bleLu0ZWn7vWc+l0JGcaai10yNrUnXLP/8Jf59ewX+c3Wgz+B34Df+vbVrc16zTMVgp9um9bxEfzPU5kPqUtVWxhs6OiWTVW+gIfywB9uXi7CGcGW/zk98k/kmvJ95IfJn/j3uQ+4c5zn3Kfcd+AyF3gLnJfcl9xH3OfR2rUee80a+6vo7EK5mmXUdyfQlrYLTwoZIU9wsPCZEtP6BWGhAlhL3p2N6sTjRdduwbHsG9kq32sgBepc+xurLPW4T9URpYGJ3ym4+8zA05u44QjST8ZIoVtu3qE7fWmdn5LPdqvgcZz8Ww8BWJ8X3w0PhQ/wnCDGd+LvlHs8dRy6bLLDuKMaZ20tZrqisPJ5ONiCq8yKhYM5cCgKOu66Lsc0aYOtZdo5QCwezI4wm9J/v0X23mlZXOfBjj8Jzv3WrY5D+CsA9D7aMs2gGfjve8ArD6mePZSeCfEYt8CONWDw8FXTxrPqx/r9Vt4biXeANh8vV7/+/16ffMD1N8AuKD/A/8leAvFY9bLAAAAXGVYSWZNTQAqAAAACAAEAQYAAwAAAAEAAgAAARIAAwAAAAEAAQAAASgAAwAAAAEAAgAAh2kABAAAAAEAAAA+AAAAAAACoAIABAAAAAEAAACHoAMABAAAAAEAAABNAAAAAKv3+/8AAAILaVRYdFhNTDpjb20uYWRvYmUueG1wAAAAAAA8eDp4bXBtZXRhIHhtbG5zOng9ImFkb2JlOm5zOm1ldGEvIiB4OnhtcHRrPSJYTVAgQ29yZSA2LjAuMCI+CiAgIDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+CiAgICAgIDxyZGY6RGVzY3JpcHRpb24 rdr="Bangla Hope"></div>
+      <div class="logo-img"><img src="data:image/png;base64,..." alt="Logo"></div>
       <div class="logo-text"><h1>Bangla Hope</h1><span>Sponsorship Program</span></div>
     </div>
     <div class="sidebar-section">
       <div class="sidebar-section-label">Overview</div>
-      <a href="../bh_dashboard.html" class="nav-item">
-        <svg class="nav-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1" /><rect x="14" y="3" width="7" height="7" rx="1" /><rect x="3" y="14" width="7" height="7" rx="1" /><rect x="14" y="14" width="7" height="7" rx="1" /></svg>
-        Dashboard
-      </a>
-      <a href="../wireframe/bh_students_blueprint.html" class="nav-item active">
-        <svg class="nav-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /></svg>
-        All Students <span class="nav-badge">821</span>
-      </a>
+      <a href="bh_dashboard.html" class="nav-item">Dashboard</a>
+      <a href="bh_students.html" class="nav-item active">All Students <span class="nav-badge">821</span></a>
     </div>
     <div class="sidebar-section">
       <div class="sidebar-section-label">Programs</div>
-      <a href="../wireframe/bh_lrc_blueprint.html" class="nav-item"><svg class="nav-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" /></svg>LRC Children's Home <span class="nav-badge">124</span></a>
-      <a href="../wireframe/bh_boarding_blueprint.html" class="nav-item"><svg class="nav-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z" /><path d="M6 12v5c3 3 9 3 12 0v-5" /></svg>Boarding Schools <span class="nav-badge">147</span></a>
-      <a href="../wireframe/bh_village_blueprint.html" class="nav-item"><svg class="nav-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /><path d="M12 8v4l3 3" /></svg>Village Day Schools <span class="nav-badge">550</span></a>
-      <a href="#" class="nav-item"><svg class="nav-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>Higher Study (Loan)</a>
-      <a href="#" class="nav-item"><svg class="nav-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Staff Children</a>
-    </div>
-    <div class="sidebar-section">
-      <div class="sidebar-section-label">Management</div>
-      <a href="../wireframe/bh_sponsors_blueprint.html" class="nav-item"><svg class="nav-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 12V22H4V12"/><path d="M22 7H2v5h20V7z"/><path d="M12 22V7"/></svg>Sponsors</a>
-      <a href="#" class="nav-item"><svg class="nav-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>Subsidies & Finance</a>
-      <a href="#" class="nav-item"><svg class="nav-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>Reports & APR</a>
-      <a href="#" class="nav-item"><svg class="nav-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Thank You Letters</a>
-      <a href="#" class="nav-item"><svg class="nav-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 6h18M8 6V4h8v2M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/></svg>Drop / Archive</a>
-    </div>
-    <div class="sidebar-footer">
-      <div class="user-row"><div class="avatar">MA</div><div><div class="user-name">Main Admin</div><div class="user-role">Full Access · Hili Office</div></div></div>
+      <a href="bh_lrc.html" class="nav-item">LRC Children's Home</a>
+      <a href="bh_boarding.html" class="nav-item">Boarding Schools</a>
+      <a href="bh_village.html" class="nav-item">Village Day Schools</a>
     </div>
   </nav>
 
   <!-- MAIN -->
   <div class="main">
-    <!-- TOPBAR (Wireframe Layout) -->
+    <!-- TOPBAR -->
     <header class="topbar">
       <div class="schema-path">SCHEMA: DIRECTORY // STUDENT_PROFILE // #LRC-0124</div>
       <div class="topbar-btns">
-        <div class="btn-secondary">Edit Record</div>
-        <div class="btn-secondary">Print History</div>
-        <a href="../wireframe/bh_students_blueprint.html" class="btn-primary"> [BACK] </a>
+        <a href="bh_student_edit.html" class="btn-secondary">Edit Record</a>
+        <div class="btn-secondary">Generate Case History</div>
+        <a href="bh_students.html" class="btn-primary"> [BACK] </a>
       </div>
     </header>
 
     <div class="content">
-      <!-- PROFILE HEADER (Wireframe Layout) -->
+      <!-- PROFILE HEADER -->
       <div class="profile-header-wire">
         <div class="photo-asset">
           <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
@@ -180,121 +184,152 @@
           </div>
           <div class="header-meta">
             CURRENT_ID: <strong>#LRC-0124</strong><br>
-            PREVIOUS_IDS: <span>#VLG-0344</span> (Village School Archive)
+            PREVIOUS_IDS: <span>#VLG-0344</span> (Village School Transitioned)
           </div>
         </div>
       </div>
 
-      <!-- GRID-2: SECTION 1 & 2 (Wireframe Layout) -->
-      <div class="grid-2">
-        <div class="card">
-          <span class="annotate-label">SEC_01: PERS_IDENTITY</span>
-          <div class="field-row">
-            <div>
-              <div class="field-group">
-                <div class="field-label">FULL_LEGAL_NAME</div>
-                <div class="field-value">Rina Begum</div>
+      <!-- TABS NAVIGATION (New Line, Left Aligned) -->
+      <div class="profile-tabs">
+        <div class="tab-item active" data-tab="tab-general">General Profile</div>
+        <div class="tab-item" data-tab="tab-history">Journey & History</div>
+        <div class="tab-item">Finance & Sponsorship</div>
+        <div class="tab-item">Documents (APR)</div>
+      </div>
+
+      <!-- TAB CONTENT: GENERAL PROFILE -->
+      <div id="tab-general">
+        <div class="grid-2">
+          <div class="card">
+            <span class="annotate-label">SEC_01: PERS_IDENTITY</span>
+            <div class="field-row">
+              <div>
+                <div class="field-group"><div class="field-label">FULL_LEGAL_NAME</div><div class="field-value">Rina Begum</div></div>
+                <div class="field-group"><div class="field-label">DATE_OF_BIRTH</div><div class="field-value">2017-05-12 (7.2Y)</div></div>
+                <div class="field-group"><div class="field-label">RELIGION</div><div class="field-value">Islam</div></div>
               </div>
-              <div class="field-group">
-                <div class="field-label">DATE_OF_BIRTH</div>
-                <div class="field-value">2017-05-12 (7.2Y)</div>
+              <div>
+                <div class="field-group"><div class="field-label">GENDER</div><div class="field-value">Female</div></div>
+                <div class="field-group"><div class="field-label">ADMISSION_DATE</div><div class="field-value">2024-01-15</div></div>
               </div>
             </div>
-            <div>
-              <div class="field-group">
-                <div class="field-label">GENDER</div>
-                <div class="field-value">Female</div>
+          </div>
+          <div class="card">
+            <span class="annotate-label">SEC_02: FAMILY_BACKGROUND</span>
+            <div class="field-row">
+              <div>
+                <div class="field-group"><div class="field-label">FATHER_NAME</div><div class="field-value">Late Md. Abdur Rashid</div></div>
+                <div class="field-group"><div class="field-label">MOTHER_NAME</div><div class="field-value">Mst. Fatema</div></div>
               </div>
-              <div class="field-group">
-                <div class="field-label">ADMISSION_DATE</div>
-                <div class="field-value">2024-01-15</div>
+              <div>
+                <div class="field-group"><div class="field-label">SIBLINGS</div><div class="field-value">1 Brother, 2 Sisters</div></div>
+                <div class="field-group"><div class="field-label">PRIMARY_GUARDIAN</div><div class="field-value">Mother (Fatema)</div></div>
               </div>
+            </div>
+            <div class="field-group" style="margin-top: 10px;"><div class="field-label">CONTACT_INFO</div><div class="field-value">01712-XXXXXX (Mobile)</div></div>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="card">
+            <span class="annotate-label">SEC_03: SPONSORSHIP_DATA</span>
+            <div class="field-group"><div class="field-label">PRIMARY_SPONSOR</div><div class="field-value">James O'Neill (#SP-001)</div></div>
+            <div class="field-group"><div class="field-label">MONTHLY_SUBSIDY</div><div class="field-value" style="color:var(--accent-teal);">৳3,500</div></div>
+          </div>
+          <div class="card">
+            <span class="annotate-label">SEC_04: COMPLIANCE_LOGS</span>
+            <div class="field-group"><div class="field-label">APR_STATUS</div><div class="field-value">2023_Complete // 2024_Pending</div></div>
+            <div class="field-group">
+              <div class="field-label">THANK_YOU_LETTERS</div>
+              <ul class="checklist">
+                <li class="checklist-item"><div class="check-box checked"></div> NEW_YEAR_2024</li>
+                <li class="checklist-item"><div class="check-box checked"></div> BIRTHDAY_GREETING</li>
+              </ul>
             </div>
           </div>
         </div>
 
         <div class="card">
-          <span class="annotate-label">SEC_02: GUARDIAN_BACKGROUND</span>
+          <span class="annotate-label">SEC_06: CASE_HISTORY_NARRATIVE</span>
           <div class="field-group">
-            <div class="field-label">GUARDIAN_NAME</div>
-            <div class="field-value">Mst. Fatema (Mother)</div>
-          </div>
-          <div class="field-group">
-            <div class="field-label">CASE_HISTORY_SUMMARY</div>
+            <div class="field-label">SITUATION_OVERVIEW</div>
             <div class="field-text">
-              Father deceased in 2022. Mother unable to provide nutritional and educational support. Transferred from Village Day School program to LRC for full residential care.
+              Father deceased in 2022. Rina transitioned from Village School to LRC in 2024 to ensure continued education and residential support.
             </div>
           </div>
         </div>
       </div>
 
-      <!-- GRID-2: SECTION 3 & 4 (Wireframe Layout) -->
-      <div class="grid-2">
+      <!-- TAB CONTENT: JOURNEY & HISTORY -->
+      <div id="tab-history" style="display:none;">
         <div class="card">
-          <span class="annotate-label">SEC_03: SPONSORSHIP_DATA</span>
-          <div class="field-group">
-            <div class="field-label">PRIMARY_SPONSOR</div>
-            <div class="field-value">James O'Neill (#SP-001)</div>
-          </div>
-          <div class="field-group">
-            <div class="field-label">CO_SPONSOR</div>
-            <div class="field-value" style="color:var(--text-light);">--NONE_ASSIGNED--</div>
-          </div>
-          <div class="field-group">
-            <div class="field-label">MONTHLY_SUBSIDY</div>
-            <div class="field-value" style="color:var(--accent-teal);">৳3,500</div>
+          <span class="annotate-label">SEC_07: STUDENT_JOURNEY_TIMELINE</span>
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-marker"></div>
+              <div class="timeline-content">
+                <div class="timeline-date">JAN 2024 — PRESENT</div>
+                <div class="timeline-title">Admitted to Love Receiving Center (LRC)</div>
+                <div class="timeline-desc">Full residential care initiated. ID: #LRC-0124</div>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-marker archived"></div>
+              <div class="timeline-content" style="border-style: dashed; opacity: 0.8;">
+                <div class="timeline-date">JAN 2024</div>
+                <div class="timeline-title">Transitioned from Village Schools ⇄</div>
+                <div class="timeline-desc">Promotion due to socioeconomic needs.</div>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-marker archived"></div>
+              <div class="timeline-content" style="opacity: 0.7;">
+                <div class="timeline-date">MAR 2022 — DEC 2023</div>
+                <div class="timeline-title">Village Day School Sponsorship</div>
+                <div class="timeline-desc">Student at Hili Village School. ID: #VLG-0344</div>
+              </div>
+            </div>
           </div>
         </div>
-
-        <div class="card">
-          <span class="annotate-label">SEC_04: COMPLIANCE_LOGS</span>
-          <div class="field-group">
-            <div class="field-label">APR_STATUS (ANNUAL_PROGRESS_REPORT)</div>
-            <div class="field-value">2023_Complete // 2024_Pending</div>
-          </div>
-          <div class="field-group">
-            <div class="field-label">THANK_YOU_LETTER_CHECKLIST</div>
-            <ul class="checklist">
-              <li class="checklist-item"><div class="check-box checked"></div> NEW_YEAR_2024</li>
-              <li class="checklist-item"><div class="check-box"></div> MID_YEAR_2024 (DUE: JULY)</li>
-              <li class="checklist-item"><div class="check-box checked"></div> BIRTHDAY_GREETING</li>
-            </ul>
+        <div class="card" style="border: 2px dashed var(--border-strong); background: #fcfdfe;">
+          <span class="annotate-label">SEC_08: MASTER_SYSTEM_LINK</span>
+          <div class="field-group" style="padding: 10px;">
+            <div class="field-label">GLOBAL_MASTER_ID (UUID)</div>
+            <div class="field-value" style="font-family: monospace;">550e8400-e29b-41d4-a716-446655440000</div>
           </div>
         </div>
       </div>
 
-      <!-- ACADEMIC RECORDS (Wireframe Layout - Dashed) -->
+      <!-- ACADEMIC RECORDS -->
       <div class="card card-table">
-        <span class="annotate-label" style="padding: 16px 24px 8px; border-bottom: none;">SEC_05: ACADEMIC_RECORDS</span>
+        <span class="annotate-label" style="padding: 16px 24px 8px;">SEC_05: ACADEMIC_RECORDS</span>
         <table class="prog-table">
-          <thead>
-            <tr>
-              <th>YEAR/TERM</th>
-              <th>SCHOOL_INSTITUTION</th>
-              <th>GRADE/CLASS</th>
-              <th>RESULT_SUMMARY</th>
-              <th>REMARKS</th>
-            </tr>
-          </thead>
+          <thead><tr><th>YEAR</th><th>SCHOOL</th><th>GRADE</th><th>RESULT</th></tr></thead>
           <tbody>
-            <tr>
-              <td>2023 (Final)</td>
-              <td>Hili Village School</td>
-              <td>Class 1</td>
-              <td><strong>A- (82%)</strong></td>
-              <td>Strong in Bengali, needs help with Math.</td>
-            </tr>
-            <tr>
-              <td>2024 (Term 1)</td>
-              <td>LRC Internal School</td>
-              <td>Class 2</td>
-              <td><strong>B+ (78%)</strong></td>
-              <td>Adjusting to residential environment.</td>
-            </tr>
+            <tr><td>2023</td><td>Hili Village School</td><td>Class 1</td><td>82%</td></tr>
+            <tr><td>2024</td><td>LRC School</td><td>Class 2</td><td>78%</td></tr>
           </tbody>
         </table>
       </div>
     </div>
   </div>
+
+  <script>
+    const tabs = document.querySelectorAll('.tab-item');
+    const sections = {
+      'tab-general': document.getElementById('tab-general'),
+      'tab-history': document.getElementById('tab-history')
+    };
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const target = tab.getAttribute('data-tab');
+        if (!target) return;
+        tabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        Object.values(sections).forEach(s => s.style.display = 'none');
+        sections[target].style.display = 'block';
+      });
+    });
+  </script>
 </body>
 </html>
